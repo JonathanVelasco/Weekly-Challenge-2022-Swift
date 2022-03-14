@@ -17,3 +17,25 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+var cadena = "Hola mundo"
+var vect = [String]()
+var out = ""
+
+for c in cadena {
+    vect.append(c.description)
+}
+let counter = vect.count - 1
+
+for index in 0..<counter {
+    if index > counter / 2 {
+        break
+    }
+    let temp = vect[index]
+    vect[index]=vect[counter - index]
+    vect[counter - index] = temp
+}
+
+for v in vect {
+    out += v.description
+}
+print(out)
