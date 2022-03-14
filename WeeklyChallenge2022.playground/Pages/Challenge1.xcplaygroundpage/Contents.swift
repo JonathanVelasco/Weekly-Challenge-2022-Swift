@@ -20,8 +20,56 @@ import Foundation
  *
  */
 
-func isAnagram(wordOne: String, wordTwo: String) -> Bool {
-    return wordOne.lowercased() == wordTwo.lowercased() ? false : wordOne.lowercased().sorted().elementsEqual(wordTwo.lowercased().sorted())
+
+func Anagram(word1 : String, word2: String) -> Bool {
+    let groupeLetter1 = readWord(word: word1)
+    let groupedLetter2 = readWord(word: word2)
+    var founded : Bool = false
+    if word1 == word2 {
+        return false
+    }
+    for m1 in groupeLetter1 {
+        for m2 in groupedLetter2 {
+            if m1[1] == m2[1] {
+                if m1[0] != m2[0]{
+                    return false
+                }else{
+                    print(m1)
+                    print(m2)
+                    founded = true
+                    break
+                }
+            }
+        }
+        if founded == false {
+            return false
+        }
+    }
+    
+    return true
 }
 
-print(isAnagram(wordOne: "amor", wordTwo: "roma"))
+func readWord(word : String) -> [[String]]{
+    var matrix = [[String]]()
+    var add = true
+    for w in word {
+        if matrix.isEmpty {
+            let first : [String] = ["0", w.description]
+            matrix.append(first)
+        }
+        for index in 0..<matrix.count {
+            if w.description == matrix[index][1].description {
+                matrix[index][0] = String(Int(matrix[index][0] )! + 1)
+                add = false
+            }else {
+                add = true
+            }
+        }
+        if add == true {
+            matrix.append(["1",w.description])
+        }
+    }
+    return matrix
+}
+
+print(Anagram(word1: "hola", word2: "allho"))
