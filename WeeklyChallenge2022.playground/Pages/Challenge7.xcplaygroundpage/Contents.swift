@@ -19,3 +19,38 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+let sentence : String = "Habia una vez un pez, dicho pez estaba muerto en una laguna muy lejana."
+
+var array = sentence.uppercased().components(separatedBy: " ")
+var arrayOrden = [[String]]()
+
+for i in 0..<array.count{
+    array[i] = String(array[i]).replacingOccurrences(of: ".", with: "")
+    array[i] = String(array[i]).replacingOccurrences(of: ",", with: "")
+    array[i] = String(array[i]).replacingOccurrences(of: ";", with: "")
+    array[i] = String(array[i]).replacingOccurrences(of: "?", with: "")
+}
+for word in array {
+    if arrayOrden .isEmpty {
+        arrayOrden.append(["1", word])
+    }else{
+        var band = true
+        for i in 0..<arrayOrden.count {
+            if arrayOrden[i][1] != word {
+                band = false
+            }else {
+                band = true
+                arrayOrden[i][0] = String(Int(arrayOrden[i][0])! + 1)
+                break
+            }
+        }
+        if band==false{
+            arrayOrden.append(["1",word])
+        }
+        
+    }
+}
+print(arrayOrden)
+print(array)
+print("hay un total de \(array.count) palabras")
