@@ -19,3 +19,29 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+struct Surface {
+    let wide : Float
+    let height : Float?
+    let triangle : Bool?
+}
+
+
+func CalculateArea(surface: Surface) {
+    if surface.height == nil || surface.height == surface.wide {
+        if surface.triangle == nil || surface.triangle == false {
+            print("Square  \(surface.wide * surface.wide)")
+        } else if surface.triangle != nil || surface.triangle == true {
+            print("Triangle \((surface.wide * surface.wide) / 2)")
+        }
+    } else {
+        if surface.triangle == nil || surface.triangle == false {
+            print("Rectangle \(surface.wide * surface.height!)")
+        } else if surface.triangle != nil || surface.triangle == true {
+            print("Triangle \((surface.wide * surface.height!) / 2)")
+        }
+    }
+}
+
+CalculateArea(surface: Surface(wide: 30, height: nil, triangle: nil))
+CalculateArea(surface: Surface(wide: 30, height: 25, triangle: nil))
+CalculateArea(surface: Surface(wide: 30, height: 45, triangle: true))
