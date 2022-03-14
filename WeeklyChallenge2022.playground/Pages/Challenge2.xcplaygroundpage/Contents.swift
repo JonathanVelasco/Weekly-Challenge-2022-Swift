@@ -18,3 +18,10 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+
+var vectFibonacci : [Int] = [0,1]
+
+while vectFibonacci.count <= 50 {
+    vectFibonacci.append( vectFibonacci[vectFibonacci.count - 2] + vectFibonacci[vectFibonacci.count - 1] )
+}
+print(vectFibonacci)
