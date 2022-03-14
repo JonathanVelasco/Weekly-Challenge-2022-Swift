@@ -18,3 +18,25 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+extension UIImageView {
+    func loadImge(withUrl url: URL) {
+           DispatchQueue.global().async { [weak self] in
+               if let imageData = try? Data(contentsOf: url) {
+                   if let image = UIImage(data: imageData) {
+                       DispatchQueue.main.async {
+                           self?.image = image
+                           print("Image size w: \(image.size.width), h: \(image.size.height)")
+                           if image.size.width > image.size.height {
+                               let ratio : Float = Float(image.size.width / image.size.height)
+                               print("\(String(format: "%.2f", ratio)) : 1")
+                           }
+                       }
+                   }
+               }
+           }
+       }
+}
+
+let imageFromURL = UIImageView()
+imageFromURL.loadImge(withUrl:
+                        URL(string: "https://raw.githubusercontent.com/mouredev/mouredev/master/mouredev_github_profile.png")!)
