@@ -21,7 +21,13 @@ import Foundation
  */
 
 for index in 1...100 {
-    let divisibleByThree = index % 3 == 0
-    let divisibleByFive = index % 5 == 0
-    print("\((divisibleByThree && divisibleByFive) ? "fizzbuzz" : (divisibleByThree ? "fizz" : (divisibleByFive ? "buzz" : index.description)))")
+    if (index % 3) == 0 && (index % 5) != 0 {
+        print("Fizz")
+    }else if (index % 5) == 0 && (index % 3) != 0 {
+        print("Buzz")
+    }else if (index % 5) == 0 && (index % 3) == 0 {
+        print("FizzBuzz")
+    }else {
+        print(index.description)
+    }
 }
