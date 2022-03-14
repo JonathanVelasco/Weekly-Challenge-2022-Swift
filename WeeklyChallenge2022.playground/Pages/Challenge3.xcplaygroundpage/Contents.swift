@@ -17,3 +17,28 @@ import Foundation
  * - Subiré una posible solución al ejercicio el lunes siguiente al de su publicación.
  *
  */
+func isPrime(number : Int) -> Bool {
+    if number < 2 {
+        return false
+    }
+    var band = false
+    
+    for i in 2..<number{
+        if number % i == 0 {
+            band = true
+        }
+    }
+    
+    if band == false {
+        return true
+    }else{
+        return false
+    }
+    
+}
+
+for index in 1...100 {
+    if isPrime(number: index) {
+        print(index)
+    }
+}
